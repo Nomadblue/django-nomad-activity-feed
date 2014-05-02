@@ -12,7 +12,8 @@ class Feed(models.Model):
 
     def add_activity(self, model, **kwargs):
         obj = model.objects.create(**kwargs)
-        return self.activity_set.add(Activity(content_object=obj))
+        self.activity_set.add(Activity(content_object=obj))
+        return obj
 
 
 class Activity(models.Model):
